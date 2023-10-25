@@ -15,11 +15,12 @@ while getopts d:h flag; do
   d) database=${OPTARG} ;;
   esac
 done
-PORT=docker ps -aqf "name=mariadb";
+PORT=$(docker ps -aqf "name=mariadb");
+
 if [ "$database" != '' ]; then
-  if docker exec -i "$PORT" mysql -uroot -proot -e "use $database"; then
+  if docker exec -i "$PORT"  mariadb -uroot -proot -e "use $database"; then
     echo "export database $database"
-    docker exec -i "$PORT" mysqldump -uroot -proot "$database" > "~/Downloads/$database"
+    docker exec -i "$PORT" mariadb-dump -uroot -proot "$database" > "$HOME/Downloads/${database}.sql"
     echo "Successfully export database $database"
   else
     echo "Cannot find Database $database for export"
