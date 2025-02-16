@@ -7,11 +7,9 @@ DATE=$(date +%Y-%m-%d_%H-%M-%S)
 WEB_ROOT="/var/www"
 
 # Project types
-#LARAVEL_PROJECTS="invoice_cementart invoice-tsiekkas"
-#OCTOBER_PROJECTS="cementart qrcontact rafaellaemploymentagency sixproperties sotiriskastanas"
-LARAVEL_PROJECTS="invoice-tsiekkas sotiriskastanas"
-REACT_PROJECTS="skwebsolution"
-OCTOBER_PROJECTS="qrcontact"
+LARAVEL_PROJECTS=""
+REACT_PROJECTS=""
+OCTOBER_PROJECTS=""
 # Create backup directory if it doesn't exist
 mkdir -p "$BACKUP_DIR"
 backup_database() {
