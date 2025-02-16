@@ -21,10 +21,10 @@ if [ "$database" == '' ]; then
    exit 0
 fi
 if [ "$database" != '' ]; then
-  if ! docker exec -i "$PORT" mysql -uroot -proot -e "use $database"; then
+  if ! docker exec -i "$PORT" mariadb -uroot -proot -e "use $database"; then
     echo "create new database $database"
     docker exec -i "$PORT" mariadb -uroot -proot -e "create database $database"
-    echo "Succesfully create database $database"
+    echo "Successfully create database $database"
   else
     echo "$database are exist. Do you want to drop old database $database (y/n): [y]"
     read -s -n 1 drop_mysql
